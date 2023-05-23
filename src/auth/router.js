@@ -2,12 +2,12 @@
 
 const express = require('express');
 const { basicAuth } = require('./middleware/basic');
-const router = express.Router();
 const { Users } = require('./models/users-model');
+const { app } = require('../server');
 
 
 // Signup Route -- create a new user
-router.post('/signup', async (req, res) => {
+app.post('/signup', async (req, res) => {
   try {
     const record = await Users.create(req.body);
     res.status(201).send(record);
@@ -16,8 +16,8 @@ router.post('/signup', async (req, res) => {
 
 
 // Signin Route -- login with username and password
-router.post('/signin', basicAuth, async (req, res) => {
+app.post('/signin', basicAuth, async (req, res) => {
   res.status(200).send(req.user);
 });
 
-module.exports = router;
+module.exports = app;

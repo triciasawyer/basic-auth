@@ -1,5 +1,6 @@
 'use strict';
 
+
 module.exports = (sequelizeDb, DataTypes) => {
   return sequelizeDb.define('users', {
     username: {

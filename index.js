@@ -4,8 +4,8 @@
 require('dotenv').config();
 
 
-const { sequelizeDb } = require ('./src/auth/models/usersModel');
-const { start } = require ('./src/server');
+const { sequelizeDb } = require('./src/auth/models/usersModel');
+const { start } = require('./src/server');
 const PORT = process.env.PORT || 3005;
 
 
@@ -16,3 +16,4 @@ sequelizeDb.sync()
     start(PORT);
   })
   .catch(err => console.error(err));
+
