@@ -3,16 +3,11 @@
 
 const express = require('express');
 const bcrypt = require('bcrypt');
-const base64 = require('base-64');
+// const base64 = require('base-64');
 
 const router = express.Router();
 const { userModel } = require ('./models');
 const basicAuth = require('./middleware/basic');
-
-
-router.get('/', (req, res) => {
-  res.status(200).send('Auth route running');
-});
 
 
 // Signup Route -- create a new user
