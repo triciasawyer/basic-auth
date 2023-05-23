@@ -1,8 +1,8 @@
 'use strict';
 
 
-module.exports = (sequelizeDb, DataTypes) => {
-  return sequelizeDb.define('users', {
+module.exports = (sequelize, DataTypes) => {
+  return sequelize.define('users', {
     username: {
       type: DataTypes.STRING,
       allowNull: false,

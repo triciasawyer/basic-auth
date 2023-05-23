@@ -1,16 +1,14 @@
 'use strict';
 
 
-require('dotenv').config();
-const { Sequelize } = require('sequelize');
-
-
-const DATABASE_URL = process.env.NODE_ENV === 'test' ? 'sqlite::memory:' : process.env.DATABASE_URL;
+const { Sequelize, DataTypes } = require('sequelize');
+const userSchema = require('./user');
 
 
 // db singleton
-const sequelizeDb = new Sequelize(DATABASE_URL);
+const sequelize = new Sequelize(process.env.DATABASE_URL);
 
+const userModel = userSchema(sequelize, DataTypes);
 
-module.exports = { sequelizeDb };
+module.exports = { sequelize, userModel };
 
