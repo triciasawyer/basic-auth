@@ -1,24 +1,27 @@
 'use strict';
 
 
-const express = require('express');
-const { basicAuth } = require('./middleware/basic');
-const { Users } = require('./models/usersModel');
-const { app } = require('../server');
-
-
 // Signup Route -- create a new user
-app.post('/signup', async (req, res) => {
+const express = require('express');
+const router = express.Router();
+const bcrypt = require ('bcrypt');
+const { Users } = require ('./models/usersModel');
+const { basicAuth } = require('./middleware/basic');
+
+
+router.post('/signup', async(req, res)=>{
   try {
+    req.body.password = await bcrypt.hash(req.body.password, 10);
     const record = await Users.create(req.body);
-    res.status(201).send(record);
+    res.status(201).json(record);
   } catch (err) { res.status(403).send('Error Creating User'); }
 });
 
 
 // Signin Route -- login with username and password
-app.post('/signin', basicAuth, async (req, res) => {
+router.post('/signin', basicAuth, async (req, res) => {
   res.status(200).send(req.user);
 });
 
-module.exports = app;
+
+module.exports = router;

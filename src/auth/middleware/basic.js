@@ -3,7 +3,7 @@
 
 const base64 = require('base-64');
 const bcrypt = require('bcrypt');
-const { UsersModel } = require('../models/usersModel');
+const { UsersModel} = require('../models/usersModel');
 
 async function basicAuth(req, res, next) {
   let { authorization } = req.headers;
@@ -13,7 +13,7 @@ async function basicAuth(req, res, next) {
     res.status(401).send('Not Authorized');
   } else {
     let authString = authorization.split(' ')[1];
-    console.log('authStr:', authString); // dGVzdDpwYXNz
+    console.log('authStr:', authString);
 
     let decodedAuthString = base64.decode(authString);
     console.log('decodedAuthString:', decodedAuthString);
@@ -25,6 +25,7 @@ async function basicAuth(req, res, next) {
     // find the user in the database
     let user = await UsersModel.findOne({where: { username }});
     console.log('user:', user);
+    
     // IF the user exists (in database after a signup request)...
     if(user){
       // compare  password from database to the signin password
