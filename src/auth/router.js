@@ -1,8 +1,9 @@
 'use strict';
 
+
 const express = require('express');
 const { basicAuth } = require('./middleware/basic');
-const { Users } = require('./models/users-model');
+const { Users } = require('./models/usersModel');
 const { app } = require('../server');
 
 
