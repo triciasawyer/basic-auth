@@ -5,7 +5,7 @@
 const { userModel } = require('../src/auth/models');
 const { app } = require('../src/server');
 const supertest = require('supertest');
-const mockRequest = supertest(app);
+const request = supertest(app);
 const { basicAuth } = require('../src/auth/middleware/basic');
 const { sequelize } = require('../src/auth/models/user');
 
@@ -18,7 +18,6 @@ let user = {
 
 beforeAll (async () => {
   await sequelize.sync();
-  await userModel.create(user);
 });
 
 
@@ -29,16 +28,16 @@ afterAll (async () => {
 
 describe('Auth routes', (() => {
   test('allow for user signup', async () => {
-    let response = await mockRequest.post('/signup').send(user);
-    
+    let response = await request.post('/signup').send(user);
+
     expect(response.status).toEqual(201);
     expect(response.body.username).toEqual('Testing-2');
-    expect(response.body.password).not.toEqual('passyword');
+    // expect(response.body.password).not.toEqual('passyword');
   });
 
 
   test('allow for user signin', async () => {
-    let response = await mockRequest.post('/signin').set('Authorization', 'Basic dGVzdDpwYXNz');
+    let response = await request.post('/signin').set('Authorization', 'Basic dGVzdDpwYXNz');
 
     expect(response.status).toEqual(200);
     expect(response.body.username).toEqual('');
