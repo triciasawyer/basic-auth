@@ -6,8 +6,6 @@ const supertest = require('supertest');
 const request = supertest(app);
 const basicAuth = require('../src/auth/middleware/basic');
 const { sequelize } = require('../src/auth/models/index');
-const { response } = require('express');
-
 
 let user = {
   username: 'Testing-2',
