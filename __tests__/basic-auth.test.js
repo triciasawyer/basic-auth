@@ -1,13 +1,12 @@
 'use strict';
 
-// const bcrypt = require('bcrypt');
-// const base64 = require('base-64');
-const { userModel } = require('../src/auth/models');
+
 const { app } = require('../src/server');
 const supertest = require('supertest');
 const request = supertest(app);
-const { basicAuth } = require('../src/auth/middleware/basic');
-const { sequelize } = require('../src/auth/models/user');
+const basicAuth = require('../src/auth/middleware/basic');
+const { sequelize } = require('../src/auth/models/index');
+const { response } = require('express');
 
 
 let user = {
@@ -32,20 +31,20 @@ describe('Auth routes', (() => {
 
     expect(response.status).toEqual(201);
     expect(response.body.username).toEqual('Testing-2');
-    // expect(response.body.password).not.toEqual('passyword');
   });
 
 
   test('allow for user signin', async () => {
-    let response = await request.post('/signin').set('Authorization', 'Basic dGVzdDpwYXNz');
+    let response = await request.post('/signin').set('Authorization', 'Basic VGVzdGluZy0yOnBhc3N5d29yZA');
 
     expect(response.status).toEqual(200);
-    expect(response.body.username).toEqual('');
+    expect(response.body.username).toEqual('Testing-2');
   });
+
 
   test('/signin fails', async () => {
     let req = { headers: { authorization: 'Basic bad' } };
-    let res = { status: null };
+    let res = { status: jest.fn() };
     let next = jest.fn();
     await basicAuth(req, res, next);
 
