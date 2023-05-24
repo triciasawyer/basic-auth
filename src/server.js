@@ -3,8 +3,8 @@
 
 const express = require('express');
 const app = express();
-// const errorHandler = require('./error-handlers/500');
-// const notFound = require('./error-handlers/404');
+const errorHandler = require('./error-handlers/500');
+const notFound = require('./error-handlers/404');
 const authRouter = require('./auth/router');
 
 
@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
 });
 
 
-// app.use('*', notFound);
-// app.use(errorHandler);
+app.use('*', notFound);
+app.use(errorHandler);
 
 
 const start = (port) => { app.listen(port, () => console.log('Listening on port:', port)); };
