@@ -10,8 +10,8 @@ Deploy an Express server that implements Basic Authentication, with signup and s
 
 ### Links and Resources
 
-- [GitHub Actions ci/cd](https://github.com/triciasawyer/basic-express-server/actions)
-- [back-end dev server url](https://basic-express-server-dev-4sx4.onrender.com)
+- [GitHub Actions ci/cd]
+- [back-end dev server url]
 - [back-end prod server url]
 
 ### Collaborators
@@ -26,17 +26,7 @@ clone repo, npm i, then run nodemon in the terminal
 
 #### Routes
 
-404 bad route : /foo
-GET : /pet
-GET : /pet/:id
-GET : /owner
-GET : /owner/:id
-POST : /pet
-POST : /owner
-PUT : /owner/:id
-PUT : /pet/:id
-DELETE : /owner/:id
-DELETE : /owner/:id
+
 
 #### Tests
 
@@ -52,4 +42,4 @@ to run tests, after running `npm i`, run the command `npm test`
 
 #### UML
 
-![UML](./assets/UML3.png)
+![UML](./assets/Lab6-UML.png)
