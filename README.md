@@ -10,11 +10,12 @@ Deploy an Express server that implements Basic Authentication, with signup and s
 
 ### Links and Resources
 
-- [GitHub Actions ci/cd]
-- [back-end dev server url]
-- [back-end prod server url]
+- [GitHub Actions ci/cd](https://github.com/triciasawyer/basic-auth/actions)
+- [back-end prod server url](https://basic-auth-prod.onrender.com)
 
 ### Collaborators
+
+Got help from Daniel
 
 ### Setup
 
@@ -26,7 +27,8 @@ clone repo, npm i, then run nodemon in the terminal
 
 #### Routes
 
-
+/signin
+/signup
 
 #### Tests
 
@@ -34,11 +36,11 @@ to run tests, after running `npm i`, run the command `npm test`
 
 #### Deployed version
 
-[Render deploy]
+[Render deploy](https://basic-auth-prod.onrender.com)
 
 #### PR
 
-[PR 1](basic-auth)
+[PR 1](dev)
 
 #### UML
 
