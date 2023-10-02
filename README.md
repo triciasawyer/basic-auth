@@ -15,7 +15,7 @@ Deploy an Express server that implements Basic Authentication, with signup and s
 
 ### Collaborators
 
-Got help from Daniel
+Daniel Frey
 
 ### Setup
 
